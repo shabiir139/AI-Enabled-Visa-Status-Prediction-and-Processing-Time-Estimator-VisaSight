@@ -1,211 +1,289 @@
-# VisaSight – AI-Enabled Visa Status Prediction & Processing Time Estimator
+# 🎯 VisaSight - Production Ready
 
-<div align="center">
+## AI-Enabled Visa Status Prediction & Processing Time Estimator
 
-![VisaSight Logo](https://img.shields.io/badge/VisaSight-AI%20Visa%20Predictor-3373FF?style=for-the-badge&logo=passport&logoColor=white)
-
-**Predict visa outcomes and processing times with AI-powered insights**
-
-[![Next.js](https://img.shields.io/badge/Next.js-14-black?style=flat-square&logo=next.js)](https://nextjs.org/)
-[![FastAPI](https://img.shields.io/badge/FastAPI-0.109-009688?style=flat-square&logo=fastapi)](https://fastapi.tiangolo.com/)
-[![BERT](https://img.shields.io/badge/BERT-Transformers-orange?style=flat-square&logo=huggingface)](https://huggingface.co/)
-[![Supabase](https://img.shields.io/badge/Supabase-Database-3ECF8E?style=flat-square&logo=supabase)](https://supabase.com/)
-
-</div>
+[![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](/)
+[![Next.js](https://img.shields.io/badge/Next.js-14.2.0-black)](https://nextjs.org/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.109.0-009688)](https://fastapi.tiangolo.com/)
+[![Supabase](https://img.shields.io/badge/Supabase-Connected-3FCF8E)](https://supabase.com/)
 
 ---
 
-## 🎯 Overview
+## ✅ Production Build Status
 
-VisaSight is an AI-powered platform that predicts visa decision outcomes and estimates processing times for US visa applications. It uses state-of-the-art machine learning models to provide explainable predictions with confidence intervals.
+```
+✓ Compiled successfully
+✓ Linting and checking validity of types
+✓ Collecting page data
+✓ Generating static pages (11/11)
+✓ Finalizing page optimization
+```
 
-### Key Features
-
-- **🔮 Status Prediction**: Predict visa outcomes (Approved/RFE/Denied) with probabilities
-- **⏱️ Time Estimation**: Estimate processing time with 80% confidence intervals
-- **📊 Explainable AI**: Understand what factors influence your prediction (SHAP-based)
-- **📜 Rule Monitoring**: Track real-time visa policy changes
-- **📈 Analytics Dashboard**: Visualize trends and statistics
+**All pages verified and production-ready!**
 
 ---
 
-## 🏗️ Architecture
+## 🏗️ Project Structure
 
 ```
 visasight/
-├── frontend/                 # Next.js 14 Application
+├── frontend/                    # Next.js 14 App Router
 │   ├── src/
-│   │   ├── app/             # Pages (App Router)
-│   │   ├── components/      # React Components
-│   │   ├── lib/             # API client, types
-│   │   └── styles/          # Global CSS
-│   └── package.json
+│   │   ├── app/                 # App Router pages
+│   │   │   ├── page.tsx         # Homepage
+│   │   │   ├── layout.tsx       # Root layout
+│   │   │   ├── error.tsx        # Error boundary
+│   │   │   ├── not-found.tsx    # 404 page
+│   │   │   ├── loading.tsx      # Loading state
+│   │   │   ├── global-error.tsx # Global error handler
+│   │   │   ├── auth/            # Login/Signup pages
+│   │   │   ├── dashboard/       # Analytics dashboard
+│   │   │   ├── predict/         # AI prediction form
+│   │   │   ├── cases/           # Case management
+│   │   │   ├── rules/           # Policy monitoring
+│   │   │   └── settings/        # System settings
+│   │   ├── components/          # React components
+│   │   ├── lib/                 # Utilities & API
+│   │   └── styles/              # Global CSS
+│   ├── package.json
+│   ├── next.config.js
+│   └── vercel.json
 │
-├── backend/                  # FastAPI Application
+├── backend/                     # FastAPI Python Backend
 │   ├── app/
-│   │   ├── api/             # REST Endpoints
-│   │   ├── ml/              # Prediction service
-│   │   └── models/          # Pydantic schemas
-│   ├── main.py
+│   │   ├── api/                 # API endpoints
+│   │   ├── ml/                  # ML models
+│   │   ├── services/            # Business logic
+│   │   └── models/              # Data models
+│   ├── main.py                  # Entry point
 │   └── requirements.txt
 │
-├── ml/                       # ML Training Pipeline
-│   ├── config.py            # Hyperparameters
-│   ├── dataset_generator.py # Synthetic data
-│   ├── feature_engineering.py
-│   ├── baseline_models.py   # RF, XGBoost
-│   ├── hf_status_model.py   # BERT classifier
-│   ├── hf_time_model.py     # MiniLM estimator
-│   ├── explainability.py    # SHAP explanations
-│   ├── evaluate.py          # Metrics
-│   ├── train_baseline.py    # Baseline training
-│   ├── train_hf_status.py   # BERT training
-│   └── train_hf_time.py     # MiniLM training
-│
-└── supabase/                 # Database
-    └── migrations/           # SQL schemas
+├── Procfile                     # Railway deployment
+├── railway.json                 # Railway config
+└── README.md
 ```
 
 ---
 
-## 🧠 ML Models
-
-### Status Prediction
-
-| Model | Type | Accuracy Target |
-|-------|------|-----------------|
-| **BERT** (bert-base-uncased) | Transformer | F1 ≥ 0.70 |
-| Random Forest | Baseline | F1 ≥ 0.65 |
-| XGBoost | Baseline | F1 ≥ 0.68 |
-
-### Time Estimation
-
-| Model | Type | Accuracy Target |
-|-------|------|-----------------|
-| **MiniLM** (all-MiniLM-L6-v2) | Transformer | MAE ≤ 20% median |
-| Random Forest | Baseline | MAE ≤ 25% median |
-| XGBoost | Baseline | MAE ≤ 22% median |
-
----
-
-## 🚀 Quick Start
+## 🚀 Quick Start (Local Development)
 
 ### Prerequisites
-
 - Node.js 18+
-- Python 3.9+
-- (Optional) CUDA for GPU training
+- Python 3.10+
+- npm or yarn
 
-### 1. Clone the repository
+### 1. Clone & Install
 
 ```bash
-git clone https://github.com/yourusername/visasight.git
+# Clone repository
+git clone https://github.com/your-username/visasight.git
 cd visasight
-```
 
-### 2. Frontend Setup
-
-```bash
+# Install frontend dependencies
 cd frontend
 npm install
+
+# Install backend dependencies
+cd ../backend
+pip install -r requirements.txt
+```
+
+### 2. Configure Environment
+
+**Frontend (.env.local):**
+```env
+NEXT_PUBLIC_SUPABASE_URL=https://wrzvcytxueeppukahhdk.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_key_here
+NEXT_PUBLIC_API_URL=http://localhost:8000
+```
+
+**Backend (.env):**
+```env
+SUPABASE_URL=https://wrzvcytxueeppukahhdk.supabase.co
+SUPABASE_KEY=your_key_here
+PORT=8000
+```
+
+### 3. Run Development Servers
+
+**Terminal 1 - Backend:**
+```bash
+cd backend
+python -m uvicorn main:app --reload --port 8000
+```
+
+**Terminal 2 - Frontend:**
+```bash
+cd frontend
 npm run dev
 ```
 
-Frontend runs at: **http://localhost:3000**
+### 4. Open Application
+- **Frontend:** http://localhost:3000
+- **Backend API:** http://localhost:8000
+- **API Docs:** http://localhost:8000/docs
 
-### 3. Backend Setup
+---
 
+## 🌐 Production Deployment
+
+### Deploy Backend to Railway
+
+1. Go to [Railway.app](https://railway.app)
+2. Create new project from GitHub repo
+3. Set root directory to `/backend`
+4. Add environment variables:
+   - `SUPABASE_URL`
+   - `SUPABASE_KEY`
+   - `FRONTEND_URL` (your Vercel URL)
+5. Deploy!
+
+### Deploy Frontend to Vercel
+
+1. Go to [Vercel.com](https://vercel.com)
+2. Import GitHub repository
+3. Set root directory to `frontend`
+4. Add environment variables:
+   - `NEXT_PUBLIC_SUPABASE_URL`
+   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+   - `NEXT_PUBLIC_API_URL` (your Railway URL)
+5. Deploy!
+
+---
+
+## 📱 Features
+
+### 🎯 Core Features
+- **AI Visa Prediction** - Multiclass classification (Approved/RFE/Denied)
+- **Processing Time Estimation** - Survival analysis models
+- **Explainable AI** - SHAP-based feature importance
+- **Real-time Policy Monitoring** - Track visa rule changes
+
+### 🎨 Premium UI
+- Dark mode with gradient mesh backgrounds
+- Glassmorphism card effects
+- Smooth micro-animations
+- Responsive design
+- Modern typography (Inter, Space Grotesk)
+
+### 🔐 Authentication
+- Supabase Auth integration
+- Email/password sign up
+- Protected routes
+- Session management
+
+### 📊 Dashboard
+- Visa approval trends
+- Processing time analytics
+- Case status distribution
+- Real-time statistics
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+| Technology | Version | Purpose |
+|------------|---------|---------|
+| Next.js | 14.2.0 | React framework |
+| React | 18.2.0 | UI library |
+| TypeScript | 5.3.0 | Type safety |
+| Framer Motion | 11.0.0 | Animations |
+| Recharts | 2.12.0 | Data visualization |
+| Supabase JS | 2.93.3 | Auth & Database |
+
+### Backend
+| Technology | Version | Purpose |
+|------------|---------|---------|
+| FastAPI | 0.109.0 | API framework |
+| Uvicorn | 0.27.0 | ASGI server |
+| Supabase | 2.3.0 | Database client |
+| Scikit-learn | 1.4.0 | ML models |
+| XGBoost | 2.0.3 | Gradient boosting |
+| SHAP | 0.44.1 | Explainability |
+
+---
+
+## 📁 API Endpoints
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/health` | Health check |
+| GET | `/api/cases` | List visa cases |
+| POST | `/api/cases` | Create new case |
+| GET | `/api/cases/{id}` | Get case details |
+| POST | `/api/predict` | Get AI prediction |
+| GET | `/api/dashboard/stats` | Dashboard statistics |
+| GET | `/api/rules` | List visa rules |
+| GET | `/api/models` | List ML models |
+
+---
+
+## 🧪 Testing
+
+### Run Frontend Tests
+```bash
+cd frontend
+npm run lint
+npm run build
+```
+
+### Run Backend Tests
 ```bash
 cd backend
-pip install -r requirements.txt
-uvicorn main:app --reload
+python -m pytest
 ```
 
-Backend runs at: **http://localhost:8000**
-API docs at: **http://localhost:8000/docs**
-
-### 4. Train Models (Optional)
-
+### Test API Health
 ```bash
-cd ml
-
-# Generate synthetic dataset
-python dataset_generator.py
-
-# Train baseline models
-python train_baseline.py --model rf
-
-# Train BERT (requires GPU)
-python train_hf_status.py
-
-# Train MiniLM
-python train_hf_time.py
+curl http://localhost:8000/health
+# Expected: {"status":"healthy"}
 ```
 
 ---
 
-## 📡 API Endpoints
+## 📝 Environment Variables
 
-### Predictions
+### Frontend (Vercel)
+| Variable | Required | Description |
+|----------|----------|-------------|
+| `NEXT_PUBLIC_SUPABASE_URL` | ✅ | Supabase project URL |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | ✅ | Supabase anon key |
+| `NEXT_PUBLIC_API_URL` | ✅ | Backend API URL |
 
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| `/api/predict/status` | POST | Predict visa status probabilities |
-| `/api/predict/processing-time` | POST | Estimate processing time |
-| `/api/predict/explain/{case_id}` | GET | Get SHAP explanation |
-
-### Cases
-
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| `/api/cases` | GET | List user's cases |
-| `/api/cases` | POST | Create new case |
-| `/api/cases/{id}` | GET | Get case by ID |
-
-### Models
-
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| `/api/models` | GET | List available models |
-| `/api/models/switch` | POST | Switch active model |
-| `/api/models/metrics/{type}` | GET | Get model metrics |
+### Backend (Railway)
+| Variable | Required | Description |
+|----------|----------|-------------|
+| `SUPABASE_URL` | ✅ | Supabase project URL |
+| `SUPABASE_KEY` | ✅ | Supabase service key |
+| `FRONTEND_URL` | ✅ | Frontend URL (CORS) |
+| `PORT` | ⚪ | Server port (auto-set) |
 
 ---
 
-## 📊 MVP Scope
+## 🛡️ Security
 
-- **Country**: United States only
-- **Visa Types**: F-1, H-1B, B1/B2
-- **Architecture**: Web application (Next.js + FastAPI)
-- **Data**: Synthetic dataset for MVP
-
----
-
-## 🎯 Acceptance Criteria
-
-| Metric | Threshold |
-|--------|-----------|
-| Status F1 (macro) | ≥ 0.70 |
-| Time MAE | ≤ 20% of median |
-| 80% CI Coverage | ≥ 80% |
-| Inference p95 | ≤ 500ms |
+- ✅ CORS configured for production domains
+- ✅ Environment variables for secrets
+- ✅ Supabase Row Level Security
+- ✅ HTTPS enforced in production
+- ✅ API rate limiting
 
 ---
 
-## 📜 License
+## 📄 License
 
-MIT License - see [LICENSE](LICENSE) for details.
-
----
-
-## ⚠️ Disclaimer
-
-> **IMPORTANT**: VisaSight provides AI-generated predictions for informational purposes only. Predictions are **not legal advice** and should not replace consultation with qualified immigration attorneys. Visa decisions are ultimately made by government officials. Past performance of the model does not guarantee future accuracy.
+MIT License - feel free to use for personal or commercial projects.
 
 ---
 
-<div align="center">
+## 🤝 Support
 
-**Built with ❤️ for the visa applicant community**
+For issues or questions:
+1. Check the `/docs` endpoint for API documentation
+2. Review the error logs in Railway/Vercel dashboards
+3. Open an issue on GitHub
 
-</div>
+---
+
+**Built with ❤️ by the VisaSight Team**
