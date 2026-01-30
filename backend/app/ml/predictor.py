@@ -462,10 +462,13 @@ def get_predictor(model_type: Optional[str] = None) -> VisaPredictor:
     
     if model_type not in _predictors:
         predictor = VisaPredictor(model_type=model_type)
-        # Only load if not in low memory mode during startup, 
-        # otherwise load on first prediction
-        if os.getenv("LOW_MEMORY_MODE", "false").lower() != "true":
+        # In production/Railway, we default to NOT loading models at startup
+        # unless specifically requested. This prevents OOM during healthchecks.
+        load_on_startup = os.getenv("LOAD_MODELS_ON_STARTUP", "false").lower() == "true"
+        
+        if load_on_startup:
             predictor.load_models()
+            
         _predictors[model_type] = predictor
     
     return _predictors[model_type]

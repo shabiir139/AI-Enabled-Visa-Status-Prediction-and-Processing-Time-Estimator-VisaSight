@@ -97,6 +97,7 @@ async def root():
 @app.get("/health")
 async def health_check():
     """Health check endpoint."""
+    print("💓 Health check requested")
     return {"status": "healthy"}
 
 
