@@ -48,7 +48,7 @@ class VisaCaseCreate(BaseModel):
 
 class VisaCaseResponse(BaseModel):
     id: str
-    user_id: Optional[str] = None
+    user_id: str
     nationality: str
     visa_type: VisaType
     consulate: str
