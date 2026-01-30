@@ -1,0 +1,409 @@
+/* ============================================
+   PredictionPanel Styles
+   ============================================ */
+
+.panel {
+    background: var(--surface-glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    transition: all var(--transition-base);
+}
+
+.panel:hover {
+    border-color: var(--border-hover);
+    box-shadow: var(--shadow-glow);
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-4) var(--space-6);
+    background: rgba(51, 115, 255, 0.05);
+    border-bottom: 1px solid var(--border-default);
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.title svg {
+    color: var(--primary-400);
+}
+
+.modelVersion {
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    padding: var(--space-1) var(--space-2);
+    background: var(--surface-glass);
+    border-radius: var(--radius-md);
+}
+
+.content {
+    padding: var(--space-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+}
+
+/* Primary Outcome */
+.primaryOutcome {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    padding: var(--space-4);
+    background: var(--surface-glass);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-default);
+}
+
+.outcomeIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-base);
+}
+
+.outcomeIcon.approved {
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    color: var(--success-500);
+}
+
+.outcomeIcon.rfe {
+    background: rgba(245, 158, 11, 0.1);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    color: var(--warning-500);
+}
+
+.outcomeIcon.denied {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: var(--danger-500);
+}
+
+.outcomeDetails {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+}
+
+.outcomeLabel {
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.outcomeValue {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 600;
+}
+
+.outcomeValue.approved {
+    color: var(--success-500);
+}
+
+.outcomeValue.rfe {
+    color: var(--warning-500);
+}
+
+.outcomeValue.denied {
+    color: var(--danger-500);
+}
+
+.outcomeProbability {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+}
+
+/* Probability Section */
+.probabilitySection {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.sectionTitle {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.sectionTitle svg {
+    color: var(--text-muted);
+}
+
+.probabilityBar {
+    display: flex;
+    height: 16px;
+    border-radius: var(--radius-full);
+    overflow: hidden;
+    background: var(--surface-glass);
+}
+
+.probabilitySegment {
+    height: 100%;
+    transition: width var(--transition-slow);
+    cursor: pointer;
+}
+
+.probabilitySegment:hover {
+    filter: brightness(1.1);
+}
+
+.probabilitySegment.approved {
+    background: var(--gradient-success);
+}
+
+.probabilitySegment.rfe {
+    background: var(--gradient-warning);
+}
+
+.probabilitySegment.denied {
+    background: var(--gradient-danger);
+}
+
+.probabilityLegend {
+    display: flex;
+    gap: var(--space-6);
+    flex-wrap: wrap;
+}
+
+.legendItem {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+}
+
+.legendDot {
+    width: 10px;
+    height: 10px;
+    border-radius: var(--radius-full);
+}
+
+.legendDot.approved {
+    background: var(--success-500);
+}
+
+.legendDot.rfe {
+    background: var(--warning-500);
+}
+
+.legendDot.denied {
+    background: var(--danger-500);
+}
+
+.legendValue {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* Processing Time */
+.processingTime {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    padding: var(--space-4);
+    background: linear-gradient(135deg, rgba(51, 115, 255, 0.05) 0%, rgba(8, 194, 176, 0.05) 100%);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-default);
+}
+
+.timeDisplay {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-2);
+}
+
+.timeValue {
+    font-family: var(--font-display);
+    font-size: var(--text-4xl);
+    font-weight: 700;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.timeUnit {
+    font-size: var(--text-lg);
+    color: var(--text-secondary);
+}
+
+.confidenceInterval {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+}
+
+.confidenceInterval svg {
+    color: var(--primary-400);
+}
+
+/* Factors Section */
+.factorsSection {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.factorsList {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.factorItem {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    padding: var(--space-3);
+    background: var(--surface-glass);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-default);
+    transition: all var(--transition-fast);
+}
+
+.factorItem:hover {
+    border-color: var(--border-hover);
+    background: var(--surface-glass-hover);
+}
+
+.factorImpact {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: var(--radius-md);
+    flex-shrink: 0;
+}
+
+.factorImpact.positive {
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--success-500);
+}
+
+.factorImpact.negative {
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--danger-500);
+}
+
+.factorImpact.neutral {
+    background: rgba(113, 113, 122, 0.1);
+    color: var(--neutral-400);
+}
+
+.factorContent {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+}
+
+.factorFeature {
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.factorDescription {
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+}
+
+.factorContribution {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+/* Model Confidence */
+.modelConfidence {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3);
+    background: var(--surface-glass);
+    border-radius: var(--radius-lg);
+}
+
+.confidenceLabel {
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    white-space: nowrap;
+}
+
+.confidenceBar {
+    flex: 1;
+    height: 6px;
+    background: rgba(51, 115, 255, 0.1);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+}
+
+.confidenceBarFill {
+    height: 100%;
+    background: var(--gradient-primary);
+    border-radius: var(--radius-full);
+    transition: width var(--transition-slow);
+}
+
+.confidenceValue {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--primary-400);
+    min-width: 40px;
+    text-align: right;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .header {
+        padding: var(--space-3) var(--space-4);
+    }
+
+    .content {
+        padding: var(--space-4);
+        gap: var(--space-4);
+    }
+
+    .primaryOutcome {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .probabilityLegend {
+        justify-content: center;
+    }
+
+    .timeValue {
+        font-size: var(--text-3xl);
+    }
+}
+.errorState {
+    padding: var(--space-8);
+    text-align: center;
+    color: var(--text-muted);
+    font-size: var(--text-sm);
+}

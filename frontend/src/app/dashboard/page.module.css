@@ -1,0 +1,422 @@
+.main {
+    padding-top: 100px;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 var(--space-6) var(--space-12);
+}
+
+.header {
+    margin-bottom: var(--space-8);
+}
+
+.header h1 {
+    font-size: var(--text-3xl);
+    margin-bottom: var(--space-2);
+}
+
+.header p {
+    color: var(--text-secondary);
+}
+
+/* Stats Grid */
+.statsGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-4);
+    margin-bottom: var(--space-8);
+}
+
+/* Benchmarks */
+.benchmarkSection {
+    margin-bottom: var(--space-8);
+}
+
+.benchmarkCard {
+    background: linear-gradient(135deg, rgba(51, 115, 255, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-xl);
+    padding: var(--space-6);
+}
+
+.benchmarkHeader {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    margin-bottom: var(--space-6);
+}
+
+.benchmarkBadge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--primary-400);
+    letter-spacing: 0.1em;
+    margin-bottom: var(--space-1);
+}
+
+.benchmarkHeader h3 {
+    font-size: var(--text-lg);
+    font-weight: 600;
+}
+
+.sourceLabel {
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+}
+
+.benchmarkGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-4);
+    margin-bottom: var(--space-8);
+}
+
+.benchmarkItem {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+}
+
+.benchmarkItem .label {
+    font-size: var(--text-xs);
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.benchmarkItem .value {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 700;
+}
+
+.positive {
+    color: var(--success-400);
+}
+
+.alert {
+    color: var(--warning-400);
+}
+
+.benchmarkComparison {
+    padding: var(--space-4) 0;
+}
+
+.comparisonTrack {
+    height: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 3px;
+    position: relative;
+    margin: 30px 0;
+}
+
+.normRange {
+    position: absolute;
+    height: 100%;
+    background: rgba(51, 115, 255, 0.2);
+    border-radius: 3px;
+    z-index: 1;
+}
+
+.officialMarker,
+.aiMarker {
+    position: absolute;
+    width: 2px;
+    height: 24px;
+    top: -9px;
+    background: var(--text-primary);
+    z-index: 2;
+}
+
+.aiMarker {
+    background: var(--primary-500);
+    box-shadow: 0 0 10px var(--primary-500);
+}
+
+.markerLabel {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 10px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.aiMarker .markerLabel {
+    color: var(--primary-400);
+}
+
+/* Charts Grid */
+.chartsGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-6);
+    margin-bottom: var(--space-6);
+}
+
+.chartCard {
+    background: var(--surface-glass);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-xl);
+    padding: var(--space-5);
+}
+
+.chartHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-4);
+}
+
+.chartHeader h3 {
+    font-size: var(--text-base);
+    font-weight: 600;
+}
+
+.chartInfo {
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+}
+
+.alertBadge {
+    font-size: var(--text-xs);
+    padding: var(--space-1) var(--space-2);
+    background: rgba(245, 158, 11, 0.1);
+    color: var(--warning-500);
+    border-radius: var(--radius-md);
+}
+
+.chartBody {
+    height: 200px;
+    position: relative;
+}
+
+/* Bar Chart */
+.barChart {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    height: 100%;
+    gap: var(--space-2);
+}
+
+.barGroup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+    flex: 1;
+}
+
+.stackedBar {
+    width: 100%;
+    max-width: 40px;
+    height: 160px;
+    display: flex;
+    flex-direction: column-reverse;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+}
+
+.barApproved {
+    background: var(--gradient-success);
+    transition: height 0.5s ease;
+}
+
+.barRfe {
+    background: var(--gradient-warning);
+    transition: height 0.5s ease;
+}
+
+.barDenied {
+    background: var(--gradient-danger);
+    transition: height 0.5s ease;
+}
+
+.barLabel {
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+}
+
+.chartLegend {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-4);
+    margin-top: var(--space-3);
+    font-size: var(--text-xs);
+    color: var(--text-secondary);
+}
+
+.legendDot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: var(--space-1);
+}
+
+/* Line Chart */
+.lineChart {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    height: 100%;
+    gap: var(--space-2);
+    padding-bottom: var(--space-6);
+}
+
+.linePoint {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    flex: 1;
+    height: 100%;
+}
+
+.confidenceBar {
+    position: absolute;
+    width: 16px;
+    background: rgba(51, 115, 255, 0.1);
+    border-radius: var(--radius-sm);
+}
+
+.dataPoint {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: var(--primary-500);
+    border-radius: 50%;
+    transform: translateX(-50%);
+    left: 50%;
+    cursor: pointer;
+}
+
+.dataPoint:hover .pointValue {
+    opacity: 1;
+}
+
+.pointValue {
+    position: absolute;
+    bottom: 20px;
+    background: var(--bg-elevated);
+    padding: 2px 6px;
+    border-radius: var(--radius-sm);
+    font-size: 10px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.pointLabel {
+    position: absolute;
+    bottom: 0;
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+}
+
+/* Bottom Grid */
+.bottomGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-6);
+}
+
+/* Volatility Chart */
+.volatilityChart {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 100%;
+    gap: 4px;
+}
+
+.volatilityBar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-1);
+    flex: 1;
+    height: 100%;
+}
+
+.volBarFill {
+    width: 100%;
+    max-width: 20px;
+    border-radius: var(--radius-sm);
+    transition: height 0.5s ease;
+}
+
+.volatilityBar span {
+    font-size: 9px;
+    color: var(--text-muted);
+}
+
+/* Rules List */
+.rulesList {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.ruleItem {
+    display: flex;
+    gap: var(--space-3);
+    padding: var(--space-3);
+    background: var(--surface-glass);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-default);
+}
+
+.ruleIcon {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--surface-glass);
+    border-radius: var(--radius-md);
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+.ruleContent {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.ruleTitle {
+    font-size: var(--text-sm);
+    font-weight: 500;
+}
+
+.ruleTime {
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .statsGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .chartsGrid,
+    .bottomGrid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .statsGrid {
+        grid-template-columns: 1fr;
+    }
+}

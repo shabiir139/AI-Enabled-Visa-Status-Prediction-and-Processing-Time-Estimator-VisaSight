@@ -1,0 +1,168 @@
+.container {
+    background: var(--surface-glass);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-xl);
+    padding: var(--space-6);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-4);
+}
+
+.title {
+    font-size: var(--text-lg);
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.estimatedDate {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.dateLabel {
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+}
+
+.dateValue {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--primary-400);
+}
+
+.progressOverview {
+    margin-bottom: var(--space-6);
+}
+
+.progressBar {
+    height: 8px;
+    background: var(--surface-glass);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+    margin-bottom: var(--space-2);
+}
+
+.progressFill {
+    height: 100%;
+    background: var(--gradient-primary);
+    border-radius: var(--radius-full);
+    transition: width 0.5s ease;
+}
+
+.progressStats {
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+}
+
+.daysRemaining {
+    color: var(--accent-500);
+    font-weight: 500;
+}
+
+.timeline {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+}
+
+.step {
+    display: flex;
+    gap: var(--space-3);
+    padding: var(--space-3) 0;
+}
+
+.stepIndicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 24px;
+}
+
+.stepDot {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+    flex-shrink: 0;
+    background: var(--neutral-700);
+    border: 2px solid var(--neutral-600);
+    color: var(--text-muted);
+}
+
+.step.completed .stepDot {
+    background: var(--success-500);
+    border-color: var(--success-500);
+    color: white;
+}
+
+.step.current .stepDot {
+    background: var(--primary-500);
+    border-color: var(--primary-500);
+    box-shadow: 0 0 12px var(--primary-500);
+    animation: pulse 2s infinite;
+}
+
+.stepLine {
+    flex: 1;
+    width: 2px;
+    background: var(--border-default);
+    margin-top: var(--space-1);
+}
+
+.step.completed .stepLine {
+    background: var(--success-500);
+}
+
+.stepContent {
+    flex: 1;
+    padding-bottom: var(--space-2);
+}
+
+.stepLabel {
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.step.pending .stepLabel {
+    color: var(--text-muted);
+}
+
+.stepDescription {
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+    margin-top: var(--space-1);
+}
+
+.confidenceBand {
+    margin-top: var(--space-4);
+    padding: var(--space-3);
+    background: rgba(51, 115, 255, 0.05);
+    border-radius: var(--radius-lg);
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    text-align: center;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 12px var(--primary-500);
+    }
+
+    50% {
+        box-shadow: 0 0 24px var(--primary-500);
+    }
+}

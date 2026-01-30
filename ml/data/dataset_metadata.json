@@ -1,0 +1,32 @@
+{
+  "n_samples": 5000,
+  "seed": 42,
+  "generated_at": "2026-01-29T23:58:54.578621",
+  "columns": [
+    "id",
+    "nationality",
+    "visa_type",
+    "consulate",
+    "submission_date",
+    "decision_date",
+    "processing_days",
+    "documents_submitted",
+    "document_count",
+    "sponsor_type",
+    "prior_travel",
+    "status"
+  ],
+  "status_distribution": {
+    "approved": 4199,
+    "rfe": 620,
+    "denied": 181
+  },
+  "visa_type_distribution": {
+    "H-1B": 1772,
+    "F-1": 1501,
+    "B1/B2": 952,
+    "L-1": 427,
+    "O-1": 198,
+    "J-1": 150
+  }
+}

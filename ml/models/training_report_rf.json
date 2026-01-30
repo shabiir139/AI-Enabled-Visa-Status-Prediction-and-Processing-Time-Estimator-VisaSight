@@ -1,0 +1,109 @@
+{
+  "report_generated_at": "2026-01-29T23:58:56.509121",
+  "model_type": "rf",
+  "baseline_comparison": {
+    "majority_class": 0,
+    "majority_f1": 0.3022351797862002,
+    "median_time": 48.0,
+    "median_mae": 33.56133333333333
+  },
+  "status_prediction": {
+    "train": {
+      "train_accuracy": 0.8448571428571429,
+      "train_f1_macro": 0.3083996286592775,
+      "val_accuracy": 0.8293333333333334,
+      "val_f1_macro": 0.3022351797862002,
+      "val_f1_per_class": [
+        0.9067055393586005,
+        0.0,
+        0.0
+      ]
+    },
+    "test": {
+      "accuracy": 0.8293333333333334,
+      "f1_macro": 0.3022351797862002,
+      "f1_weighted": 0.7519611273080661,
+      "f1_per_class": [
+        0.9067055393586005,
+        0.0,
+        0.0
+      ],
+      "precision_macro": 0.27644444444444444,
+      "recall_macro": 0.3333333333333333,
+      "recall_per_class": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "confusion_matrix": [
+        [
+          622,
+          0,
+          0
+        ],
+        [
+          90,
+          0,
+          0
+        ],
+        [
+          38,
+          0,
+          0
+        ]
+      ],
+      "f1_approved": 0.9067055393586005,
+      "recall_approved": 1.0,
+      "f1_rfe": 0.0,
+      "recall_rfe": 0.0,
+      "f1_denied": 0.0,
+      "recall_denied": 0.0
+    }
+  },
+  "time_estimation": {
+    "train": {
+      "train_mae": 12.08779858938431,
+      "train_rmse": 18.61988946966873,
+      "val_mae": 17.254299380517157,
+      "val_rmse": 26.45307829152565,
+      "val_r2": 0.6428658119023842
+    },
+    "test": {
+      "mae": 16.638597910276545,
+      "rmse": 24.94565959324987,
+      "mse": 622.2859325422994,
+      "r2": 0.6383862604923576,
+      "mape": 28.100731547735503,
+      "p50_error": 9.727070969267656,
+      "p90_error": 40.43139256460631,
+      "p95_error": 52.05358384873287
+    }
+  },
+  "feature_importance": {
+    "days_since_submission": 0.2837252726468804,
+    "consulate": 0.18675261034803775,
+    "nationality": 0.1726248270604874,
+    "visa_type": 0.11738475832302155,
+    "sponsor_type": 0.10282759317627013,
+    "document_count": 0.10196729586634987,
+    "prior_travel": 0.034717642578952934
+  },
+  "acceptance_criteria": {
+    "thresholds": {
+      "min_macro_f1": 0.7,
+      "min_rfe_recall": 0.6,
+      "min_denied_recall": 0.6,
+      "max_mae_ratio": 0.2,
+      "min_ci_coverage": 0.8,
+      "max_inference_ms": 500
+    },
+    "results": {
+      "status": false,
+      "time": "False"
+    }
+  },
+  "improvement_over_baseline": {
+    "status_f1_improvement": 0.0,
+    "time_mae_improvement": 16.922735423056785
+  }
+}
