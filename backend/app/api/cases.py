@@ -42,9 +42,12 @@ async def create_visa_case(
     """Create a new visa case."""
     user_id = get_user_id_from_token(authorization)
     
+    # Use a well-known demo user UUID for unauthenticated requests
+    DEMO_USER_UUID = "00000000-0000-0000-0000-000000000000"
+    
     if not user_id:
-        # Demo mode - create case without user
-        user_id = "demo-user"
+        # Use None (NULL in DB) for demo user to avoid foreign key constraint issues
+        user_id = None
     
     try:
         data = {
@@ -93,7 +96,11 @@ async def create_visa_case(
                 created_at=datetime.utcnow(),
             )
     except Exception as e:
-        print(f"Supabase error: {e}")
+        print(f"!!!! Supabase INSERT error: {e}")
+        print(f"!!!! Error type: {type(e)}")
+        print(f"!!!! Data attempted: {data}")
+        import traceback
+        traceback.print_exc()
         # Fallback to mock for demo
         return VisaCaseResponse(
             id=str(uuid.uuid4()),
@@ -119,10 +126,20 @@ async def list_visa_cases(
     """List all visa cases for the current user."""
     user_id = get_user_id_from_token(authorization)
     
+    # Use the same demo user UUID as in create_visa_case
+    DEMO_USER_UUID = "00000000-0000-0000-0000-000000000000"
+    
+    # If no auth token, default to demo (NULL user_id)
+    if not user_id:
+        user_id = None
+    
     try:
         query = supabase.table("visa_cases").select("*")
         
-        if user_id:
+        # Filter by user_id
+        if user_id is None:
+            query = query.is_("user_id", "null")
+        else:
             query = query.eq("user_id", user_id)
         
         # Pagination
@@ -134,7 +151,9 @@ async def list_visa_cases(
         
         # Get total count
         count_result = supabase.table("visa_cases").select("id", count="exact")
-        if user_id:
+        if user_id is None:
+            count_result = count_result.is_("user_id", "null")
+        else:
             count_result = count_result.eq("user_id", user_id)
         count_data = count_result.execute()
         total = count_data.count if hasattr(count_data, 'count') else len(result.data)
@@ -165,7 +184,11 @@ async def list_visa_cases(
             total_pages=(total + per_page - 1) // per_page if total > 0 else 1,
         )
     except Exception as e:
-        print(f"Supabase error: {e}")
+        print(f"!!!! Supabase error in list_visa_cases: {e}")
+        print(f"!!!! Error type: {type(e)}")
+        print(f"!!!! User ID: {user_id}")
+        import traceback
+        traceback.print_exc()
         # Return empty for demo
         return PaginatedResponse(
             items=[],
