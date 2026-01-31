@@ -52,7 +52,7 @@ export default function NotFound() {
                     lineHeight: '1.6',
                     fontSize: '1.1rem'
                 }}>
-                    Sorry, we couldn't find the page you're looking for.
+                    Sorry, we couldn&apos;t find the page you&apos;re looking for.
                     <br />
                     It might have been moved or deleted.
                 </p>

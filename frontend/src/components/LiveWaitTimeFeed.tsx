@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, memo, useMemo } from 'react';
 import { api } from '@/lib/api';
 import styles from './LiveWaitTimeFeed.module.css';
 
@@ -12,9 +12,12 @@ interface WaitTime {
     source: string;
 }
 
-export default function LiveWaitTimeFeed() {
+function LiveWaitTimeFeed() {
     const [data, setData] = useState<WaitTime[]>([]);
     const [loading, setLoading] = useState(true);
+
+    // ⚡ Bolt: Memoize duplicated data to prevent array recreation on every render
+    const doubledData = useMemo(() => [...data, ...data], [data]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -53,7 +56,7 @@ export default function LiveWaitTimeFeed() {
                 ) : (
                     <div className={styles.tickerContent}>
                         {/* Double the data for seamless looping */}
-                        {[...data, ...data].map((item, idx) => (
+                        {doubledData.map((item, idx) => (
                             <div key={`${item.consulate}-${item.visa_type}-${idx}`} className={styles.item}>
                                 <span className={styles.city}>{item.consulate}</span>
                                 <span className={styles.type}>{item.visa_type}</span>
@@ -68,3 +71,6 @@ export default function LiveWaitTimeFeed() {
         </div>
     );
 }
+
+// ⚡ Bolt: Prevent unnecessary re-renders when parent (Dashboard) updates state
+export default memo(LiveWaitTimeFeed);
