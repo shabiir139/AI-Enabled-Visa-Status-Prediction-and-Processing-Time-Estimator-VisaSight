@@ -4,6 +4,7 @@ AI-Enabled Visa Status Prediction & Processing Time Estimator
 """
 
 from fastapi import FastAPI
+from datetime import datetime
 from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
 
