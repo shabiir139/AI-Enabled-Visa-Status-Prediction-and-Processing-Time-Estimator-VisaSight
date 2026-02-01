@@ -2,26 +2,13 @@
 VisaSight Backend - FastAPI Application
 AI-Enabled Visa Status Prediction & Processing Time Estimator
 """
-import sys
-import os
 
-print("🔥🔥🔥 VISASIGHT DEBUG STARTUP: BEGIN 🔥🔥🔥", file=sys.stderr)
-print(f"Current Working Directory: {os.getcwd()}", file=sys.stderr)
-print(f"Python Version: {sys.version}", file=sys.stderr)
+from fastapi import FastAPI
+from datetime import datetime
+from fastapi.middleware.cors import CORSMiddleware
+from contextlib import asynccontextmanager
 
-try:
-    print("Attempting imports...", file=sys.stderr)
-    from fastapi import FastAPI
-    from datetime import datetime
-    from fastapi.middleware.cors import CORSMiddleware
-    from contextlib import asynccontextmanager
-    from app.api import cases, predict, rules, dashboard, models, external
-    print("Imports successful! ✅", file=sys.stderr)
-except Exception as e:
-    print(f"❌ CRITICAL IMPORT ERROR: {e}", file=sys.stderr)
-    import traceback
-    traceback.print_exc(file=sys.stderr)
-    sys.exit(1)
+from app.api import cases, predict, rules, dashboard, models, external
 
 
 @asynccontextmanager
