@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, memo } from 'react';
 import { api } from '@/lib/api';
 import styles from './ModelSelector.module.css';
 
@@ -13,7 +13,8 @@ interface ModelInfo {
     is_active: boolean;
 }
 
-export default function ModelSelector() {
+// Memoized to prevent re-renders when parent form state updates
+function ModelSelector() {
     const [models, setModels] = useState<ModelInfo[]>([]);
     const [loading, setLoading] = useState(true);
     const [switching, setSwitching] = useState(false);
@@ -140,3 +141,5 @@ export default function ModelSelector() {
         </div>
     );
 }
+
+export default memo(ModelSelector);
