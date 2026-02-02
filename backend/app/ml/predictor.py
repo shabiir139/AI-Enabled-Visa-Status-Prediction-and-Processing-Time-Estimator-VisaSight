@@ -14,7 +14,8 @@ from pathlib import Path
 from typing import Dict, List, Optional, Tuple, Any, Union
 
 # Add ML module to path
-ML_PATH = Path(__file__).parent.parent.parent.parent / "ml"
+# Add ML module to path
+ML_PATH = Path(__file__).parent.parent.parent / "ml_core"
 if ML_PATH.exists():
     sys.path.insert(0, str(ML_PATH))
 

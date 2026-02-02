@@ -34,7 +34,7 @@ class ModelSwitchRequest(BaseModel):
 
 
 # Models directory
-MODELS_DIR = Path(__file__).parent.parent.parent.parent / "ml" / "models"
+MODELS_DIR = Path(__file__).parent.parent.parent / "ml_core" / "models"
 
 # Active model state
 _active_model_type = "mock"
