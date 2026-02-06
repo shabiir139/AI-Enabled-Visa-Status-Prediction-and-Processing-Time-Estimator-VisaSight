@@ -180,7 +180,7 @@ export default function HomePage() {
                             <h2>Ready to Get Your Prediction?</h2>
                             <p>Create a visa case and get AI-powered insights in minutes</p>
                             <Link href="/predict" className="btn btn-primary btn-lg">
-                                Start Now — It's Free
+                                Start Now — It&apos;s Free
                             </Link>
                         </div>
                     </div>
