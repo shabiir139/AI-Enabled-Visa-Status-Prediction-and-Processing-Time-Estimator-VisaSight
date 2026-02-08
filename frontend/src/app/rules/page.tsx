@@ -13,29 +13,29 @@ export default function RulesPage() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
-    const fetchRules = async () => {
-        setLoading(true);
-        setError(null);
-        try {
-            const res = await api.rules.list(selectedType === 'all' ? undefined : selectedType);
-            setRules(res.items);
-        } catch (err) {
-            console.error('Failed to fetch rules:', err);
-            // Fallback to mock data
-            setRules([
-                { id: 'rule_001', visa_type: 'H-1B', rule_category: 'processing', title: 'H-1B Cap Season Processing Priority', description: 'USCIS processes cap-subject H-1B petitions with priority during the annual filing window starting April 1. This includes special handling for advanced degree exemptions.', effective_date: '2026-01-15', impact_score: 4.5, source_url: 'https://uscis.gov' },
-                { id: 'rule_002', visa_type: 'F-1', rule_category: 'documentation', title: 'F-1 OPT Extension Documentation', description: 'Students applying for STEM OPT extension must submit I-765 with updated employer attestation form I-983. Failure to comply may lead to SEVIS termination.', effective_date: '2026-01-10', impact_score: 3.2, source_url: 'https://ice.gov/sevis' },
-                { id: 'rule_003', visa_type: 'B1/B2', rule_category: 'interview', title: 'Interview Waiver Program Extension', description: 'Renewal applicants who previously held B1/B2 visas may qualify for interview waiver through December 2026. This applies to low-risk nationalities.', effective_date: '2026-01-05', impact_score: 1.5, source_url: 'https://travel.state.gov' },
-                { id: 'rule_004', visa_type: 'H-1B', rule_category: 'fees', title: 'Premium Processing Fee Update', description: 'Premium processing fee for H-1B petitions increased to $2,805 effective January 2026. This fee is non-refundable regardless of outcome.', effective_date: '2026-01-01', impact_score: 3.8, source_url: 'https://uscis.gov/fees' },
-                { id: 'rule_005', visa_type: 'F-1', rule_category: 'eligibility', title: 'SEVIS Status Verification Requirements', description: 'All F-1 students must maintain active SEVIS status. Grace period is 60 days after program completion for departure or transfer.', effective_date: '2025-12-01', impact_score: 4.2, source_url: 'https://studyinthestates.dhs.gov' },
-            ]);
-            setError('Showing demo rules (API offline)');
-        } finally {
-            setLoading(false);
-        }
-    };
+    useEffect(() => {
+        const fetchRules = async () => {
+            setLoading(true);
+            setError(null);
+            try {
+                const res = await api.rules.list(selectedType === 'all' ? undefined : selectedType);
+                setRules(res.items);
+            } catch (err) {
+                console.error('Failed to fetch rules:', err);
+                // Fallback to mock data
+                setRules([
+                    { id: 'rule_001', visa_type: 'H-1B', rule_category: 'processing', title: 'H-1B Cap Season Processing Priority', description: 'USCIS processes cap-subject H-1B petitions with priority during the annual filing window starting April 1. This includes special handling for advanced degree exemptions.', effective_date: '2026-01-15', impact_score: 4.5, source_url: 'https://uscis.gov' },
+                    { id: 'rule_002', visa_type: 'F-1', rule_category: 'documentation', title: 'F-1 OPT Extension Documentation', description: 'Students applying for STEM OPT extension must submit I-765 with updated employer attestation form I-983. Failure to comply may lead to SEVIS termination.', effective_date: '2026-01-10', impact_score: 3.2, source_url: 'https://ice.gov/sevis' },
+                    { id: 'rule_003', visa_type: 'B1/B2', rule_category: 'interview', title: 'Interview Waiver Program Extension', description: 'Renewal applicants who previously held B1/B2 visas may qualify for interview waiver through December 2026. This applies to low-risk nationalities.', effective_date: '2026-01-05', impact_score: 1.5, source_url: 'https://travel.state.gov' },
+                    { id: 'rule_004', visa_type: 'H-1B', rule_category: 'fees', title: 'Premium Processing Fee Update', description: 'Premium processing fee for H-1B petitions increased to $2,805 effective January 2026. This fee is non-refundable regardless of outcome.', effective_date: '2026-01-01', impact_score: 3.8, source_url: 'https://uscis.gov/fees' },
+                    { id: 'rule_005', visa_type: 'F-1', rule_category: 'eligibility', title: 'SEVIS Status Verification Requirements', description: 'All F-1 students must maintain active SEVIS status. Grace period is 60 days after program completion for departure or transfer.', effective_date: '2025-12-01', impact_score: 4.2, source_url: 'https://studyinthestates.dhs.gov' },
+                ]);
+                setError('Showing demo rules (API offline)');
+            } finally {
+                setLoading(false);
+            }
+        };
 
-    React.useEffect(() => {
         fetchRules();
     }, [selectedType]);
 
