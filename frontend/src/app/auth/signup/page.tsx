@@ -78,7 +78,7 @@ export default function SignupPage() {
                                 <div style={{ fontSize: '4rem', marginBottom: '1rem' }}>✅</div>
                                 <h2 className={styles.formTitle}>Check Your Email</h2>
                                 <p className={styles.formSubtitle} style={{ marginTop: '1rem' }}>
-                                    We've sent a confirmation link to <strong>{email}</strong>.
+                                    We&apos;ve sent a confirmation link to <strong>{email}</strong>.
                                     Please check your inbox and click the link to verify your account.
                                 </p>
                                 <Link href="/auth/login" className={styles.submitBtn} style={{ marginTop: '2rem', display: 'inline-block', textDecoration: 'none' }}>
